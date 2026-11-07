@@ -28,7 +28,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🚢 Dashboard de Muestreo Wellboat (2016-2025)")
+st.title("Dashboard de Muestreo Wellboat (2016-2026)")
 st.markdown("---")
 
 # -----------------------------------------------------------------------------
@@ -69,7 +69,7 @@ def load_data(uploaded_file=None):
             st.sidebar.info(f"📋 Columnas: {list(df.columns)}")
             
             # Mostrar primeras filas para depuración
-            with st.expander("🔍 Vista previa de datos (primeras 5 filas)", expanded=False):
+            with st.expander("Vista previa de datos (primeras 5 filas)", expanded=False):
                 st.dataframe(df.head())
             
             # Verificar si el DataFrame está vacío
@@ -78,7 +78,7 @@ def load_data(uploaded_file=None):
                 return df
             
             # Mostrar información de tipos de datos
-            with st.expander("📊 Información de tipos de datos", expanded=False):
+            with st.expander("Información de tipos de datos", expanded=False):
                 buffer = io.StringIO()
                 df.info(buf=buffer)
                 st.text(buffer.getvalue())
@@ -128,7 +128,7 @@ def load_data(uploaded_file=None):
                 
                 # Mostrar distribución de resultados
                 result_counts = df['RESULTADO'].value_counts()
-                st.sidebar.info(f"📊 Resultados: {dict(result_counts)}")
+                st.sidebar.info(f"Resultados: {dict(result_counts)}")
             
             # Normalizar tipo de muestreo
             if 'TIPO MUESTREO' in df.columns:
@@ -140,7 +140,7 @@ def load_data(uploaded_file=None):
                 
                 # Mostrar wellboats únicos
                 unique_wellboats = df['WELLBOAT'].nunique()
-                st.sidebar.info(f"🚢 Wellboats únicos: {unique_wellboats}")
+                st.sidebar.info(f"Wellboats únicos: {unique_wellboats}")
             
             # Extraer año, mes, día si existen las columnas separadas
             if 'AÑO' not in df.columns and 'FECHA MUESTREO' in df.columns:
